@@ -6,6 +6,10 @@ import { z } from "zod";
 import { Button } from "@/components/ui/button";
 import CustomFormField from "../CustomFormField";
 import { Form } from "@/components/ui/form";
+import CustomSubmitButton from "../CustomSubmitButton";
+import { useState } from "react";
+import { userFormValidation } from "@/lib/validation";
+import { useRouter } from "next/navigation";
 
 export enum FromFieldType {
   INPUT = "input",
@@ -17,26 +21,40 @@ export enum FromFieldType {
   SKELETON = "skeleton",
 }
 
-const formSchema = z.object({
-  username: z.string().min(2, {
-    message: "Username must be at least 2 characters.",
-  }),
-});
-
 const PatientForm = () => {
+  const { isLoading, setIsLoading } = useState(false);
+  const router = useRouter();
+
   // 1. Define your form.
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
+  const form = useForm<z.infer<typeof userFormValidation>>({
+    resolver: zodResolver(userFormValidation),
     defaultValues: {
-      username: "",
+      name: "",
+      email: "",
+      phone: "",
     },
   });
 
   // 2. Define a submit handler.
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    console.log(values);
+  async function onSubmit({
+    name,
+    email,
+    phone,
+  }: z.infer<typeof userFormValidation>) {
+    setIsLoading(true);
+
+    try {
+      // const userData = {
+      //   name,
+      //   email,
+      //   phone,
+      // };
+      // const user = await createUser(userData);
+
+      // if(user) router.push(`/patients/${user.id}/register`);
+    } catch (error) {
+      console.error(error);
+    }
   }
   return (
     <Form {...form}>
@@ -73,7 +91,9 @@ const PatientForm = () => {
           label="Phone number"
           placeholder="(555) 555-5555"
         />
-        <Button type="submit">Submit</Button>
+        <CustomSubmitButton isLoading={isLoading}>
+          Get Started
+        </CustomSubmitButton>
       </form>
     </Form>
   );
