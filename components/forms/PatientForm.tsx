@@ -22,8 +22,9 @@ export enum FromFieldType {
   SKELETON = "skeleton",
 }
 
+
 const PatientForm = () => {
-  const { isLoading, setIsLoading } = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
 
   // 1. Define your form.
@@ -37,26 +38,28 @@ const PatientForm = () => {
   });
 
   // 2. Define a submit handler.
-  async function onSubmit({
-    name,
-    email,
-    phone,
-  }: z.infer<typeof userFormValidation>) {
+  const onSubmit = async (values: z.infer<typeof userFormValidation>) => {
     setIsLoading(true);
 
     try {
-      const userData = {
-        name,
-        email,
-        phone,
+      const user = {
+        name: values.name,
+        email: values.email,
+        phone: values.phone,
       };
-      const user = await createUser(userData);
 
-      if(user) router.push(`/patients/${user.id}/register`);
+      const newUser = await createUser(user);
+      console.log(newUser);
+
+      if (newUser) {
+        router.push(`/patients/${newUser.$id}/register`);
+      }
     } catch (error) {
-      console.error(error);
+      console.log(error);
     }
-  }
+
+    setIsLoading(false);
+  };
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 flex-1">
