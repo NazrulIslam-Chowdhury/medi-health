@@ -22,7 +22,6 @@ export enum FromFieldType {
   SKELETON = "skeleton",
 }
 
-
 const PatientForm = () => {
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
@@ -49,7 +48,6 @@ const PatientForm = () => {
       };
 
       const newUser = await createUser(user);
-      console.log(newUser);
 
       if (newUser) {
         router.push(`/patients/${newUser.$id}/register`);
