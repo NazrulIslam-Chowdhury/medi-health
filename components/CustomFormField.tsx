@@ -1,9 +1,7 @@
 "use client";
 
 import {
-  Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -13,8 +11,13 @@ import { Input } from "@/components/ui/input";
 import { Control } from "react-hook-form";
 import { FromFieldType } from "./forms/PatientForm";
 import Image from "next/image";
-import 'react-phone-number-input/style.css'
-import PhoneInput from 'react-phone-number-input'
+import "react-phone-number-input/style.css";
+import PhoneInput from "react-phone-number-input";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import { Select, SelectContent, SelectTrigger, SelectValue } from "./ui/select";
+import { Textarea } from "./ui/textarea";
+import { Checkbox } from "./ui/checkbox";
 
 interface CustomProps {
   control: Control;
@@ -31,8 +34,16 @@ interface CustomProps {
   renderSkeleton?: (field) => React.ReactNode;
 }
 
-const RenderField = ({ field, props }: { field; props: CustomProps }) => {
-  const { fieldType, iconSrc, iconAlt, placeholder } = props;
+const RenderField = ({ field, props }: { field: any; props: CustomProps }) => {
+  const {
+    // fieldType,
+    iconSrc,
+    iconAlt,
+    placeholder,
+    showTimeSelect,
+    dateFormate,
+    renderSkeleton,
+  } = props;
 
   switch (props.fieldType) {
     case FromFieldType.INPUT:
@@ -57,14 +68,85 @@ const RenderField = ({ field, props }: { field; props: CustomProps }) => {
           </FormControl>
         </div>
       );
-      case FromFieldType.PHONE_INPUT:
-      return(
+    case FromFieldType.TEXTAREA:
+      return (
         <FormControl>
-          <PhoneInput defaultCountry="BD" placeholder={placeholder} international withCountryCallingCode value={field.value} onChange={field.onChange} className="input-phone"/>
+          <Textarea
+            placeholder={placeholder}
+            {...field}
+            className="shad-textarea"
+            disabled={props.disabled}
+          />
         </FormControl>
-      )
-      break;
-
+      );
+    case FromFieldType.PHONE_INPUT:
+      return (
+        <FormControl>
+          <PhoneInput
+            defaultCountry="BD"
+            placeholder={placeholder}
+            international
+            withCountryCallingCode
+            value={field.value}
+            onChange={field.onChange}
+            className="input-phone"
+          />
+        </FormControl>
+      );
+    case FromFieldType.DATE_PICKER:
+      return (
+        <div className="flex rounded-md border border-dark-500 bg-dark-400">
+          <Image
+            src="/assets/icons/calendar.svg"
+            alt="calendar"
+            height={24}
+            width={24}
+            className="ml-2"
+          />
+          <FormControl>
+            <DatePicker
+              selected={field.value}
+              onChange={(date) => field.onChange(date)}
+              dateFormat={dateFormate ?? "MM/DD/YYYY"}
+              showTimeSelect={showTimeSelect ?? false}
+              timeInputLabel="Time:"
+              wrapperClassName="date-picker"
+            />
+          </FormControl>
+        </div>
+      );
+    case FromFieldType.SELECT:
+      return (
+        <FormControl>
+          <Select onValueChange={field.onchange} defaultValue={field.value}>
+            <FormControl>
+              <SelectTrigger className="shad-select-trigger">
+                <SelectValue placeholder={placeholder} />
+              </SelectTrigger>
+            </FormControl>
+            <SelectContent className="shad-select-content">
+              {props.children}
+            </SelectContent>
+          </Select>
+        </FormControl>
+      );
+    case FromFieldType.SKELETON:
+      return renderSkeleton ? renderSkeleton(field) : null;
+    case FromFieldType.CHECKBOX:
+      return (
+        <FormControl>
+          <div className="flex items-center gap-4">
+            <Checkbox
+              id={props.name}
+              checked={field.value}
+              onChange={field.onChange}
+            />
+            <label htmlFor={props.name} className="checkbox-label">
+              {props.label}
+            </label>
+          </div>
+        </FormControl>
+      );
     default:
       break;
   }
