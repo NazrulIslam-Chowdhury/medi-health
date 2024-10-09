@@ -10,18 +10,10 @@ import { useState } from "react";
 import { userFormValidation } from "@/lib/validation";
 import { useRouter } from "next/navigation";
 import { createUser } from "@/lib/actions/patient.actions";
+import { FromFieldType } from "./PatientForm";
 
-export enum FromFieldType {
-  INPUT = "input",
-  TEXTAREA = "textarea",
-  CHECKBOX = "checkbox",
-  PHONE_INPUT = "phoneInput",
-  DATE_PICKER = "datePicker",
-  SELECT = "select",
-  SKELETON = "skeleton",
-}
 
-const PatientForm = () => {
+const RegisterForm = ({user}:{user:User}) => {
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
 
@@ -59,10 +51,13 @@ const PatientForm = () => {
   };
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 flex-1">
-        <section className="mb-12 space-y-4">
-          <h1 className="header">Hi there 👋</h1>
-          <p className="text-dark-700">Schedule an appointment</p>
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-12 flex-1">
+        <section className="space-y-4">
+          <h1 className="header">Welcome 👋</h1>
+          <p className="text-dark-700">Let us know more about yourself.</p>
+        </section>
+        <section className="space-y-4">
+          <h2 className="sub-header">Personal information</h2>
         </section>
 
         <CustomFormField
@@ -74,24 +69,6 @@ const PatientForm = () => {
           iconSrc="/assets/icons/user.svg"
           iconAlt="user"
         />
-
-        <CustomFormField
-          fieldType={FromFieldType.INPUT}
-          control={form.control}
-          name="email"
-          label="Email"
-          placeholder="johndoe@gmail.com"
-          iconSrc="/assets/icons/email.svg"
-          iconAlt="email"
-        />
-
-        <CustomFormField
-          fieldType={FromFieldType.PHONE_INPUT}
-          control={form.control}
-          name="phone"
-          label="Phone number"
-          placeholder="(555) 555-5555"
-        />
         <CustomSubmitButton isLoading={isLoading}>
           Get Started
         </CustomSubmitButton>
@@ -100,4 +77,4 @@ const PatientForm = () => {
   );
 };
 
-export default PatientForm;
+export default RegisterForm;
