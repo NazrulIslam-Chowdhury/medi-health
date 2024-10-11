@@ -36,7 +36,6 @@ interface CustomProps {
 
 const RenderField = ({ field, props }: { field: any; props: CustomProps }) => {
   const {
-    // fieldType,
     iconSrc,
     iconAlt,
     placeholder,
@@ -118,10 +117,10 @@ const RenderField = ({ field, props }: { field: any; props: CustomProps }) => {
     case FromFieldType.SELECT:
       return (
         <FormControl>
-          <Select onValueChange={field.onchange} defaultValue={field.value}>
+          <Select onValueChange={field.onChange} defaultValue={field.value}>
             <FormControl>
               <SelectTrigger className="shad-select-trigger">
-                <SelectValue placeholder={placeholder} />
+                <SelectValue placeholder={props.placeholder} />
               </SelectTrigger>
             </FormControl>
             <SelectContent className="shad-select-content">
@@ -139,7 +138,7 @@ const RenderField = ({ field, props }: { field: any; props: CustomProps }) => {
             <Checkbox
               id={props.name}
               checked={field.value}
-              onChange={field.onChange}
+              onCheckedChange={field.onChange}
             />
             <label htmlFor={props.name} className="checkbox-label">
               {props.label}
