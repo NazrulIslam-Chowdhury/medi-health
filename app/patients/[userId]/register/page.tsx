@@ -1,11 +1,11 @@
 import RegisterForm from "@/components/forms/RegisterForm";
 import { getUser } from "@/lib/actions/patient.actions";
 import Image from "next/image";
-
+// import { useRouter } from "next/router";
 
 const Registration = async ({ params: { userId } }: SearchParamProps) => {
   const user = await getUser(userId);
-console.log(userId)
+  // console.log(user);
   return (
     <div className="flex h-screen max-h-screen">
       <section className="remove-scrollbar container">
@@ -18,10 +18,8 @@ console.log(userId)
             className="mb-12 h-10 w-fit"
           />
 
-          <RegisterForm user={user} />
-          <p className="copyright py-12">
-            © 2024 MediHealth
-          </p>
+          <RegisterForm user={user?user:undefined} />
+          <p className="copyright py-12">© 2024 MediHealth</p>
         </div>
       </section>
       <Image
