@@ -31,7 +31,6 @@ const RegisterForm = ({ user }: { user: User }) => {
   // 1. Define your form.
   const form = useForm<z.infer<typeof PatientFormValidation>>({
     resolver: zodResolver(PatientFormValidation),
-    // @ts-expect-error jkjas
     defaultValues: {
       ...PatientFormDefaultValues,
       name: user.name,
@@ -83,17 +82,14 @@ const RegisterForm = ({ user }: { user: User }) => {
           ? formData
           : undefined,
         privacyConsent: values.privacyConsent,
-        treatmentConsent:values.treatmentConsent,
-        disclosureConsent:values.disclosureConsent,
+        treatmentConsent: values.treatmentConsent,
+        disclosureConsent: values.disclosureConsent,
       };
 
-      console.log(values);
-
-      // @ts-expect-error jkjas
       const patient = await registerPatient(patientData);
 
       if (patient) {
-        router.push(`/patients/${patient.$id}/new-appointment`);
+        router.push(`/patients/${user.$id}/new-appointment`);
       }
     } catch (error) {
       console.log(error);
