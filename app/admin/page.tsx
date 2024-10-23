@@ -33,7 +33,7 @@ const Admin = () => {
             type="appointments"
             count={5}
             label="Scheduled appointments"
-            icon="/assets/icons/appointment.svg"
+            icon="/assets/icons/appointments.svg"
           />
           <Card
             type="pending"
