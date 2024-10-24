@@ -75,16 +75,16 @@ const AppointmentForm = ({
           primaryPhysician: values.primaryPhysician,
           schedule: new Date(values.schedule),
           reason: values.reason!,
-          note: values.note,
           status: status as Status,
+          note: values.note,
         };
 
-        const appointment = await createAppointment(appointmentData);
+        const newAppointment = await createAppointment(appointmentData);
 
-        if (appointment) {
+        if (newAppointment) {
           form.reset();
           router.push(
-            `/patients/${userId}/new-appointment/success?appointmentId=${appointment.$id}`
+            `/patients/${userId}/new-appointment/success?appointmentId=${newAppointment.$id}`
           );
         }
       } else {
@@ -94,8 +94,8 @@ const AppointmentForm = ({
           appointment: {
             primaryPhysician: values?.primaryPhysician,
             schedule: new Date(values?.schedule),
-            cancellationReason: values?.cancellationReason,
             status: status as Status,
+            cancellationReason: values?.cancellationReason,
           },
           type,
         };
@@ -209,7 +209,7 @@ const AppointmentForm = ({
         <CustomSubmitButton
           isLoading={isLoading}
           className={`${
-            type === "cancel" ? "shad-danger-button" : "shad-primary-btn"
+            type === "cancel" ? "shad-danger-btn" : "shad-primary-btn"
           } w-full`}
         >
           {buttonLabel}

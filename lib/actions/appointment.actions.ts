@@ -1,3 +1,5 @@
+"use server";
+
 import { ID, Query } from "node-appwrite";
 import {
   APPOINTMENT_COLLECTION_ID,
@@ -87,13 +89,16 @@ export const getRecentAppointmentList = async () => {
   }
 };
 
+//  UPDATE APPOINTMENT
 export const updateAppointment = async ({
   appointmentId,
-  userId,
+  // userId,
+  // timeZone,
   appointment,
-  type,
-}: UpdateAppointmentParams) => {
+}: // type,
+UpdateAppointmentParams) => {
   try {
+    // Update appointment to scheduled -> https://appwrite.io/docs/references/cloud/server-nodejs/databases#updateDocument
     const updatedAppointment = await databases.updateDocument(
       DATABASE_ID!,
       APPOINTMENT_COLLECTION_ID!,
@@ -101,16 +106,14 @@ export const updateAppointment = async ({
       appointment
     );
 
-    if (!updatedAppointment) {
-      throw new Error("Appointment not found");
-    }
+    if (!updatedAppointment) throw Error;
 
-    //todo sms notification
+    // const smsMessage = `Greetings from CarePulse. ${type === "schedule" ? `Your appointment is confirmed for ${formatDateTime(appointment.schedule!, timeZone).dateTime} with Dr. ${appointment.primaryPhysician}` : `We regret to inform that your appointment for ${formatDateTime(appointment.schedule!, timeZone).dateTime} is cancelled. Reason:  ${appointment.cancellationReason}`}.`;
+    // await sendSMSNotification(userId, smsMessage);
 
     revalidatePath("/admin");
-
     return parseStringify(updatedAppointment);
   } catch (error) {
-    console.error("An error occurred while updating the appointment:", error);
+    console.error("An error occurred while scheduling an appointment:", error);
   }
 };
