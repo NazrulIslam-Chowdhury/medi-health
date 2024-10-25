@@ -55,6 +55,8 @@ const AppointmentForm = ({
   ) => {
     setIsLoading(true);
 
+    // console.log(type);
+
     let status;
     switch (type) {
       case "schedule":
