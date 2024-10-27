@@ -47,14 +47,14 @@ const RenderField = ({ field, props }: { field: any; props: CustomProps }) => {
   switch (props.fieldType) {
     case FromFieldType.INPUT:
       return (
-        <div className="flex rounded-md border border-dark-500 bg-dark-400">
+        <div className="flex rounded-md border border-dark-500 bg-green-500">
           {iconSrc && (
             <Image
               src={iconSrc}
               alt={iconAlt || "icon"}
               height={24}
               width={24}
-              className="ml-2"
+              className="m-2"
             />
           )}
 
@@ -94,13 +94,13 @@ const RenderField = ({ field, props }: { field: any; props: CustomProps }) => {
       );
     case FromFieldType.DATE_PICKER:
       return (
-        <div className="flex rounded-md border border-dark-500 bg-dark-400">
+        <div className="flex rounded-md border border-dark-500 bg-gray-400">
           <Image
             src="/assets/icons/calendar.svg"
             alt="calendar"
             height={24}
             width={24}
-            className="ml-2"
+            className="m-2"
           />
           <FormControl>
             <DatePicker
@@ -160,7 +160,7 @@ const CustomFormField = (props: CustomProps) => {
       render={({ field }) => (
         <FormItem className="flex-1">
           {fieldType !== FromFieldType.CHECKBOX && label && (
-            <FormLabel>{label}</FormLabel>
+            <FormLabel className="text-dark-800">{label}</FormLabel>
           )}
           <RenderField field={field} props={props} />
 
