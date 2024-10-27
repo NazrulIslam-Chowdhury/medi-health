@@ -69,7 +69,7 @@ const RenderField = ({ field, props }: { field: any; props: CustomProps }) => {
       );
     case FromFieldType.TEXTAREA:
       return (
-        <FormControl>
+        <FormControl className="bg-gray-200 text-dark-800 placeholder:text-dark-800">
           <Textarea
             placeholder={placeholder}
             {...field}
@@ -94,7 +94,7 @@ const RenderField = ({ field, props }: { field: any; props: CustomProps }) => {
       );
     case FromFieldType.DATE_PICKER:
       return (
-        <div className="flex rounded-md border border-dark-500 bg-gray-400">
+        <div className="flex rounded-md border border-dark-500 bg-gray-200">
           <Image
             src="/assets/icons/calendar.svg"
             alt="calendar"
@@ -139,6 +139,7 @@ const RenderField = ({ field, props }: { field: any; props: CustomProps }) => {
               id={props.name}
               checked={field.value}
               onCheckedChange={field.onChange}
+              className="bg-dark-800"
             />
             <label htmlFor={props.name} className="checkbox-label">
               {props.label}

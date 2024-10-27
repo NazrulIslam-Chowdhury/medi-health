@@ -42,7 +42,7 @@ const RegisterForm = ({ user }: { user: User }) => {
   // 2. Define a submit handler.
   const onSubmit = async (values: z.infer<typeof PatientFormValidation>) => {
     setIsLoading(true);
-
+console.log(values.privacyConsent,values.treatmentConsent,values.disclosureConsent)
     let formData;
 
     if (
@@ -104,12 +104,12 @@ const RegisterForm = ({ user }: { user: User }) => {
         className="space-y-12 flex-1"
       >
         <section className="space-y-4">
-          <h1 className="header">Welcome 👋</h1>
+          <h1 className="header text-dark-800">Welcome 👋</h1>
           <p className="text-dark-700">Let us know more about yourself.</p>
         </section>
         <section className="space-y-4">
           <div className="mb-9 space-y-1">
-            <h2 className="sub-header">Personal information</h2>
+            <h2 className="sub-header text-dark-800">Personal information</h2>
           </div>
         </section>
 
@@ -166,7 +166,7 @@ const RegisterForm = ({ user }: { user: User }) => {
                   {GenderOptions.map((gender) => (
                     <div key={gender} className="radio-group">
                       <RadioGroupItem value={gender} id={gender} />
-                      <Label htmlFor={gender} className="cursor-pointer">
+                      <Label htmlFor={gender} className="cursor-pointer text-dark-800">
                         {gender}
                       </Label>
                     </div>
@@ -215,7 +215,7 @@ const RegisterForm = ({ user }: { user: User }) => {
 
         <section className="space-y-4">
           <div className="mb-9 space-y-1">
-            <h2 className="sub-header">Medical information</h2>
+            <h2 className="sub-header text-dark-800">Medical information</h2>
           </div>
         </section>
 
@@ -298,7 +298,7 @@ const RegisterForm = ({ user }: { user: User }) => {
 
         <section className="space-y-4">
           <div className="mb-9 space-y-1">
-            <h2 className="sub-header">Identification and Verification</h2>
+            <h2 className="sub-header text-dark-800">Identification and Verification</h2>
           </div>
         </section>
         <CustomFormField
@@ -336,7 +336,7 @@ const RegisterForm = ({ user }: { user: User }) => {
 
         <section className="space-y-4">
           <div className="mb-9 space-y-1">
-            <h2 className="sub-header">Consent and Privacy</h2>
+            <h2 className="sub-header text-dark-800">Consent and Privacy</h2>
           </div>
         </section>
         <CustomFormField
