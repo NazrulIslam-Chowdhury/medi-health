@@ -31,8 +31,8 @@ A web-based patient management system built with **Next.js**, **TypeScript**, **
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/yourusername/patient-management-system.git
-   cd patient-management-system
+   git clone https://github.com/NazrulIslam-Chowdhury/medi-health.git
+   cd medi-health
 
 2. **Clone the repository**:
    ```bash
