@@ -6,10 +6,10 @@ A web-based patient management system built with **Next.js**, **TypeScript**, **
 - [Features](#features)
 - [Technologies Used](#technologies-used)
 - [Installation](#installation)
-- [Environment Variables](#environment-variables)
+<!-- - [Environment Variables](#environment-variables)
 - [Usage](#usage)
 - [Contributing](#contributing)
-- [License](#license)
+- [License](#license) -->
 
 ## Features
 
@@ -33,3 +33,8 @@ A web-based patient management system built with **Next.js**, **TypeScript**, **
    ```bash
    git clone https://github.com/yourusername/patient-management-system.git
    cd patient-management-system
+
+2. **Clone the repository**:
+   ```bash
+   npm install
+   npm run dev
