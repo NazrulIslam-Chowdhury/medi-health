@@ -26,7 +26,7 @@ const Success = async ({
             height={1000}
             width={1000}
             alt="logo"
-            className="h-10 w-fit"
+            className="h-12 w-fit"
           />
         </Link>
 
@@ -37,13 +37,13 @@ const Success = async ({
             width={200}
             alt="success"
           />
-          <h2 className="header mb-6 max-w-[600px] text-center">
+          <h2 className="header mb-6 max-w-[600px] text-center text-dark-800">
             Your <span className="text-green-500">appointment request</span> has
             been scheduled Successfully !
           </h2>
-          <p>we'll be in touch soon.</p>
+          <p className="text-dark-800">we'll be in touch soon.</p>
         </section>
-        <section className="request-details">
+        <section className="request-details text-dark-800">
           <p>Requested appointment details.</p>
           <div className="flex items-center gap-3">
             <Image

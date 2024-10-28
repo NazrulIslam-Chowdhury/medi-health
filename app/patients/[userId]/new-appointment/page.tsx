@@ -16,7 +16,7 @@ const NewAppointment = async ({ params: { userId } }: SearchParamProps) => {
             alt="patient"
             height={1000}
             width={1000}
-            className="mb-12 h-10 w-fit"
+            className="mb-12 "
           />
 
           <AppointmentForm
@@ -32,7 +32,7 @@ const NewAppointment = async ({ params: { userId } }: SearchParamProps) => {
         alt="appointment"
         height={1000}
         width={1000}
-        className="side-img max-w-[390px] bg-bottom"
+        className="side-img max-w-[50%] bg-bottom"
       />
     </div>
   );
