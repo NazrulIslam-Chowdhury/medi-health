@@ -1,36 +1,35 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Patient Management System
 
-## Getting Started
+A web-based patient management system built with **Next.js**, **TypeScript**, **Tailwind CSS**, **Appwrite**, and **Sentry**. This system helps healthcare providers efficiently manage patient information, appointments, and medical records.
 
-First, run the development server:
+## Table of Contents
+- [Features](#features)
+- [Technologies Used](#technologies-used)
+- [Installation](#installation)
+- [Environment Variables](#environment-variables)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Patient Records Management**: Add, update, and view patient details.
+- **Appointment Scheduling**: Schedule and manage appointments with ease.
+- **Medical Records Tracking**: Keep a detailed history of patient visits and medical records.
+- **User Authentication and Authorization**: Secure access through Appwrite’s authentication.
+- **Real-Time Error Monitoring**: Track issues with Sentry to ensure a reliable system.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Technologies Used
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **[Next.js](https://nextjs.org/)**: Framework for server-rendered React applications.
+- **[TypeScript](https://www.typescriptlang.org/)**: Adds type safety to JavaScript.
+- **[Tailwind CSS](https://tailwindcss.com/)**: Utility-first CSS framework for styling.
+- **[Appwrite](https://appwrite.io/)**: Provides backend services for user authentication, database, and more.
+- **[Sentry](https://sentry.io/)**: Error monitoring for real-time tracking and issue resolution.
 
-## Learn More
+## Installation
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/yourusername/patient-management-system.git
+   cd patient-management-system
