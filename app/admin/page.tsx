@@ -28,7 +28,7 @@ const Admin = async () => {
 
       <main className="admin-main">
         <section className="w-full space-y-4">
-          <h1 className="header">Welcome 👋</h1>
+          <h1 className="header text-gray-800">Welcome 👋</h1>
           <p className="text-dark-700">
             Start the day managing new appointment
           </p>

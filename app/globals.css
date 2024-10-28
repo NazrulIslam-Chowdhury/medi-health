@@ -83,7 +83,7 @@
 
   /* ===== ADMIN */
   .admin-header {
-    @apply sticky top-3 z-20 mx-3 flex items-center justify-between rounded-2xl bg-dark-200 px-[5%] py-5 shadow-lg xl:px-12;
+    @apply sticky top-3 z-20 mx-3 flex items-center justify-between rounded-2xl  backdrop-blur-md bg-green-500/50 px-[5%] py-5 shadow-lg xl:px-12;
   }
 
   .admin-main {
@@ -247,7 +247,7 @@
   }
 
   .shad-table-row {
-    @apply border-b border-dark-400 text-light-200 !important;
+    @apply border-b border-dark-400 text-dark-800 !important;
   }
 
   .shad-otp {
